@@ -1,7 +1,6 @@
 const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const https = require('https');
 const settings = require('../settings');
 const isOwnerOrSudo = require('../lib/isOwner');
 
@@ -25,13 +24,86 @@ async function hasGitRepo() {
     }
 }
 
+async function ensureGitRemote(repoUrl) {
+    // Ensure origin exists and points to repoUrl. If it doesn't exist, add it; if different, set it.
+    try {
+        const current = await run('git remote get-url origin').catch(() => '').then(s => s.trim());
+        if (!current) {
+            await run(`git remote add origin ${repoUrl}`);
+        } else if (current !== repoUrl) {
+            await run(`git remote set-url origin ${repoUrl}`);
+        }
+        return true;
+    } catch (e) {
+        // Not fatal — caller can still attempt to fetch
+        return false;
+    }
+}
+
+async function resolveRemoteBranch() {
+    // Get current branch name (detached HEAD will return "HEAD")
+    try {
+        let branch = (await run('git rev-parse --abbrev-ref HEAD')).trim();
+        if (!branch || branch === 'HEAD') {
+            // Fallback: try to use origin/HEAD or main/master
+            try {
+                const originHead = (await run('git symbolic-ref refs/remotes/origin/HEAD').catch(() => '')).trim();
+                if (originHead) {
+                    const m = originHead.match(/refs\/remotes\/origin\/(.*)$/);
+                    if (m) branch = m[1];
+                }
+            } catch {}
+        }
+        if (!branch || branch === 'HEAD') branch = 'main';
+        return branch;
+    } catch {
+        return 'main';
+    }
+}
+
 async function updateViaGit() {
+    const repoUrl = (settings.updateRepoUrl || process.env.UPDATE_REPO_URL || 'https://github.com/jnrnkanu-md/JNR-MD.git').trim();
+    try { await ensureGitRemote(repoUrl); } catch {}
+
+    const branch = await resolveRemoteBranch();
+
     const oldRev = (await run('git rev-parse HEAD').catch(() => 'unknown')).trim();
-    await run('git fetch --all --prune');
-    const newRev = (await run('git rev-parse origin/main')).trim();
-    const alreadyUpToDate = oldRev === newRev;
+    try {
+        await run('git fetch --all --prune');
+    } catch (e) {
+        // Try fetching origin explicitly
+        try { await run(`git fetch origin`); } catch {}
+    }
+
+    // try several remote refs (origin/<branch>, origin/main, origin/master)
+    let newRev = '';
+    const candidates = [`origin/${branch}`, 'origin/main', 'origin/master'];
+    for (const ref of candidates) {
+        try {
+            newRev = (await run(`git rev-parse ${ref}`)).trim();
+            if (newRev) {
+                // Use this ref
+                break;
+            }
+        } catch {
+            // ignore
+        }
+    }
+    if (!newRev) {
+        // As a last resort, try to fetch from the configured repo URL and use FETCH_HEAD
+        try {
+            await run(`git fetch ${repoUrl} +refs/heads/*:refs/remotes/origin/*`);
+            newRev = (await run(`git rev-parse origin/${branch}`).catch(() => '')).trim();
+        } catch {}
+    }
+
+    const alreadyUpToDate = oldRev && newRev && oldRev === newRev;
     const commits = alreadyUpToDate ? '' : await run(`git log --pretty=format:"%h %s (%an)" ${oldRev}..${newRev}`).catch(() => '');
     const files = alreadyUpToDate ? '' : await run(`git diff --name-status ${oldRev} ${newRev}`).catch(() => '');
+
+    // If we resolved a newRev, reset to it; otherwise throw
+    if (!newRev) throw new Error('Unable to resolve a remote revision to update to');
+
     await run(`git reset --hard ${newRev}`);
     await run('git clean -fd');
     return { oldRev, newRev, alreadyUpToDate, commits, files };
@@ -40,7 +112,7 @@ async function updateViaGit() {
 function downloadFile(url, dest, visited = new Set()) {
     return new Promise((resolve, reject) => {
         try {
-            if (visited.has(url) || visited.size > 5) {
+            if (visited.has(url) || visited.size > 10) {
                 return reject(new Error('Too many redirects'));
             }
             visited.add(url);
@@ -84,7 +156,7 @@ function downloadFile(url, dest, visited = new Set()) {
 
 async function extractZip(zipPath, outDir) {
     if (process.platform === 'win32') {
-        const cmd = `powershell -NoProfile -Command "Expand-Archive -Path '${zipPath}' -DestinationPath '${outDir.replace(/\\/g, '/')}' -Force"`;
+        const cmd = `powershell -NoProfile -Command "Expand-Archive -Path '${zipPath}' -DestinationPath '${outDir.replace(/\\/g, "/")}' -Force"`;
         await run(cmd);
         return;
     }
@@ -123,8 +195,10 @@ function copyRecursive(src, dest, ignore = [], relative = '', outList = []) {
 }
 
 async function updateViaZip(sock, chatId, message, zipOverride) {
-    const zipUrl = (zipOverride || settings.updateZipUrl || process.env.UPDATE_ZIP_URL || 'https://github.com/bigbosssunzy/JOKER-MD/archive/refs/heads/main.zip').trim();
-    
+    // Default to your repository's main branch zip; allow override from settings or env
+    const defaultZip = `https://github.com/jnrnkanu-md/JNR-MD/archive/refs/heads/main.zip`;
+    const zipUrl = (zipOverride || settings.updateZipUrl || process.env.UPDATE_ZIP_URL || defaultZip).trim();
+
     const tmpDir = path.join(process.cwd(), 'tmp');
     if (!fs.existsSync(tmpDir)) fs.mkdirSync(tmpDir, { recursive: true });
     const zipPath = path.join(tmpDir, 'update.zip');
@@ -138,7 +212,7 @@ async function updateViaZip(sock, chatId, message, zipOverride) {
 
     const ignore = ['node_modules', '.git', 'session', 'tmp', 'tmp/', 'temp', 'data', 'baileys_store.json'];
     const copied = [];
-    
+
     let preservedOwner = null;
     let preservedBotOwner = null;
     try {
@@ -146,9 +220,9 @@ async function updateViaZip(sock, chatId, message, zipOverride) {
         preservedOwner = currentSettings && currentSettings.ownerNumber ? String(currentSettings.ownerNumber) : null;
         preservedBotOwner = currentSettings && currentSettings.botOwner ? String(currentSettings.botOwner) : null;
     } catch {}
-    
+
     copyRecursive(srcRoot, process.cwd(), ignore, '', copied);
-    
+
     if (preservedOwner) {
         try {
             const settingsPath = path.join(process.cwd(), 'settings.js');
@@ -171,7 +245,7 @@ async function restartProcess(sock, chatId, message) {
     try {
         await sock.sendMessage(chatId, { text: '✅ Update complete! Rebooting process container…' }, { quoted: message });
     } catch {}
-    
+
     setTimeout(() => {
         // Pterodactyl panels intercept exit code 1 as a crash event and trigger their auto-restart policy logic automatically.
         process.exit(1);
@@ -181,7 +255,7 @@ async function restartProcess(sock, chatId, message) {
 async function updateCommand(sock, chatId, message, zipOverride) {
     const senderId = message.key.participant || message.key.remoteJid;
     const isOwner = await isOwnerOrSudo(senderId, sock, chatId);
-    
+
     if (!message.key.fromMe && !isOwner) {
         await sock.sendMessage(chatId, { text: 'Only bot owner or sudo can use .update' }, { quoted: message });
         return;
@@ -190,8 +264,8 @@ async function updateCommand(sock, chatId, message, zipOverride) {
         await sock.sendMessage(chatId, { text: '🔄 Updating JNR NKANU CONCEPTS™, please wait…' }, { quoted: message });
         if (await hasGitRepo()) {
             const { oldRev, newRev, alreadyUpToDate, commits, files } = await updateViaGit();
-            console.log('[update] Git update applied.');
-            await run('npm install --no-audit --no-fund');
+            console.log('[update] Git update applied.', { oldRev, newRev, alreadyUpToDate });
+            await run('npm install --no-audit --no-fund').catch(() => {});
         } else {
             await updateViaZip(sock, chatId, message, zipOverride);
             await run('npm install --no-audit --no-fund').catch(() => {});
