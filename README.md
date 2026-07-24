@@ -4,7 +4,7 @@ This is a WhatsApp bot built using the Baileys library for group management, inc
 
 <div align="center"> 
   <a href="https://git.io/typing-svg"> 
-    <img src="https://readme-typing-svg.demolab.com?font=Ribeye&size=50&pause=1000&color=33ff00&center=true&width=910&height=100&lines=JOKER-MD;Multi+Device+Whatsapp+Bot;Coded+By+bigbosssunzy" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Ribeye&size=50&pause=1000&color=33ff00&center=true&width=910&height=100&lines=JNR-MD;Multi+Device+Whatsapp+Bot;Coded+By+Jnr+Nkanu" alt="Typing SVG" />
   </a> 
 </div> 
 
@@ -100,8 +100,8 @@ It is lightweight and can be easily customized to add more commands as per your 
 1. **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/bigbosssunzy/JOKER-MD.git](https://github.com/bigbosssunzy/JOKER-MD.git)
-    cd JOKER-MD
+    git clone [https://github.com/jnrnkanu-md/JNR-MD.git](https://github.com/jnrnkanu-md/JNR-MD.git)
+    cd JNR-MD
     ```
 
 2. **Install the dependencies:**
@@ -135,25 +135,25 @@ If you find this project helpful and want to support the developer, consider buy
 
 ## 📄 License
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) - see the [LICENSE](https://github.com/bigbosssunzy/JOKER-MD/blob/main/LICENSE) file for details.
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) - see the [LICENSE](https://github.com/jnrnkanu-md/JNR-MD/blob/main/LICENSE) file for details.
 
 ---
 
 ## 🙌 Contributions
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/bigbosssunzy/JOKER-MD/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/jnrnkanu-md/JNR-MD/issues).
 
 ---
 
 ## 🌟 Show your support
 
-If you like this project, please give it a [⭐️ star on GitHub](https://github.com/bigbosssunzy/JOKER-MD)!
+If you like this project, please give it a [⭐️ star on GitHub](https://github.com/jnrnkanu-md/JNR-MD)!
 
 
 ## Credits
 
-- [bigbosssunzy](https://github.com/bigbosssunzy)
-- [Baileys](https://github.com/adiwajshing/Baileys)
+- [bigbosssunzy](https://github.com/jnrnkanu-md)
+- [Baileys](https://github.com/jnrnkanu-md/Baileys)
 
 ---
 
