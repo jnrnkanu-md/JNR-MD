@@ -1,19 +1,19 @@
 # 🤖 JNR NKANU CONCEPTS™ 
 
-This is a WhatsApp bot built using the Baileys library for group management, including features like tagging all members, muting/unmuting, and many more. It's designed to help admins efficiently manage WhatsApp groups.
+This is a WhatsApp bot built using the Baileys library for group management, including features like tagging all members, muting/unmuting, and many more. It's designed to help admins efficiently manage groups.
 
 <div align="center"> 
   <a href="https://git.io/typing-svg"> 
-    <img src="https://readme-typing-svg.demolab.com?font=Ribeye&size=50&pause=1000&color=33ff00&center=true&width=910&height=100&lines=JNR-MD;Multi+Device+Whatsapp+Bot;Coded+By+Jnr+Nkanu" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Ribeye&size=50&pause=1000&color=33ff00&center=true&width=910&height=100&lines=JNR-MD;Multi+Device+Whatsapp+Bot;Coded+By+Jnr+Nkanu" alt="Typing"/>
   </a> 
 </div> 
 
 <div align="center"> 
-  <img src="assets/bot_image.jpg" alt="JNR NKANU-MD" height="300" onerror="this.src='https://placehold.co/600x300?text=JOKER-MD+Bot'"> 
+  <img src="assets/bot_image.jpg" alt="JNR NKANU-MD" height="300" onerror="this.src='https://placehold.co/600x300?text=JNR-MD+Bot'"> 
 </div>
 
 <div align="center">
-  <img src="https://img.shields.io/github/followers/bigbosssunzy?style=for-the-badge&label=Followers" alt="Followers"/>
+  <img src="https://img.shields.io/github/followers/jnrnkanu-md?style=for-the-badge&label=Followers" alt="Followers"/>
   <img src="https://img.shields.io/github/stars/jnrnkanu-md/JNR-MD?style=for-the-badge&label=Stars" alt="Stars"/>
   <img src="https://img.shields.io/github/forks/jnrnkanu-md/JNR-MD?style=for-the-badge&label=Forks" alt="Forks"/>
   <img src="https://img.shields.io/github/watchers/jnrnkanu-md/JNR-MD?style=for-the-badge&label=Watchers" alt="Watchers"/>
@@ -25,7 +25,7 @@ This is a WhatsApp bot built using the Baileys library for group management, inc
 
 ### Step 1: Fork the Repository
 
-Click the button below to fork the JOKER-MD repository to your GitHub account:
+Click the button below to fork the JNR-MD repository to your GitHub account:
 
 <div align="center">
   <a href="https://github.com/jnrnkanu-md/JNR-MD/fork">
@@ -82,9 +82,7 @@ Click the button below to fork the JOKER-MD repository to your GitHub account:
 
 ## 📖 About
 
-The JOKER-MD WhatsApp Bot assists group admins by providing them with tools to efficiently manage large WhatsApp groups. The bot uses the Baileys library to interact with the WhatsApp Web API and supports multi-device features.
-
-It is lightweight and can be easily customized to add more commands as per your requirements. The bot runs in a Node.js environment and provides Pair Code or QR code-based authentication to link your WhatsApp account.
+The JNR-MD WhatsApp Bot assists group admins by providing them with tools to efficiently manage large WhatsApp groups. The bot uses the Baileys library to interact with the WhatsApp Web API and is lightweight and easily customizable.
 
 ---
 
@@ -100,7 +98,7 @@ It is lightweight and can be easily customized to add more commands as per your 
 1. **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/jnrnkanu-md/JNR-MD.git](https://github.com/jnrnkanu-md/JNR-MD.git)
+    git clone https://github.com/jnrnkanu-md/JNR-MD.git
     cd JNR-MD
     ```
 
@@ -123,7 +121,7 @@ It is lightweight and can be easily customized to add more commands as per your 
 
 <div align="center">
 
-<a href="https://buymeacoffee.com/bigbosssunzy" target="_blank">
+<a href="https://buymeacoffee.com/jnrnkanu-md" target="_blank">
   <img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Support%20Developer-FF813F?style=for-the-badge&logo=buy-me-a-coffee&logoColor=white" alt="Buy Me a Coffee">
 </a>
 
@@ -152,14 +150,14 @@ If you like this project, please give it a [⭐️ star on GitHub](https://githu
 
 ## Credits
 
-- [bigbosssunzy](https://github.com/jnrnkanu-md)
-- [Baileys](https://github.com/jnrnkanu-md/Baileys)
+- [jnrnkanu-md](https://github.com/jnrnkanu-md)
+- [Baileys](https://github.com/adiwajshing/baileys)
 
 ---
 
 ## ⚠️ Important Warning
 
-**Note:** This bot is created for educational purposes only. This is NOT an official WhatsApp bot. Using this bot may lead to your WhatsApp account being banned. Use it at your own risk. The developers will not be responsible for any consequences or account bans that may occur while using this bot.
+**Note:** This bot is created for educational purposes only. This is NOT an official WhatsApp bot. Using this bot may lead to your WhatsApp account being banned. Use it at your own risk.
 
 ## 📝 Legal
 
@@ -178,10 +176,8 @@ This project is licensed under the MIT License. However, you must:
 
 ## 📜 Copyright Notice
 
-Copyright (c) 2026 bigbosssunzy. All rights reserved.
+Copyright (c) 2026 jnrnkanu-md. All rights reserved.
 
 This project contains code from various open source projects:
 - Baileys (MIT License)
 - Other libraries as listed in package.json
-
-```
