@@ -325,7 +325,7 @@ async function startXeonBotInc() {
         const antiCallNotified = new Set();
         XeonBotInc.ev.on('call', async (calls) => {
             try {
-                const { readState } = require('./commands/anticall');
+                const { readState } = require('./command/anticall');
                 if (!readState().enabled) return;
                 for (const call of calls) {
                     if (!call.from) continue;
