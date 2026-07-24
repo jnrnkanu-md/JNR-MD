@@ -14,9 +14,9 @@ This is a WhatsApp bot built using the Baileys library for group management, inc
 
 <div align="center">
   <img src="https://img.shields.io/github/followers/bigbosssunzy?style=for-the-badge&label=Followers" alt="Followers"/>
-  <img src="https://img.shields.io/github/stars/bigbosssunzy/JNR NKANU-MD?style=for-the-badge&label=Stars" alt="Stars"/>
-  <img src="https://img.shields.io/github/forks/bigbosssunzy/JNR NKANU-MD?style=for-the-badge&label=Forks" alt="Forks"/>
-  <img src="https://img.shields.io/github/watchers/bigbosssunzy/JNR NKANU-MD?style=for-the-badge&label=Watchers" alt="Watchers"/>
+  <img src="https://img.shields.io/github/stars/jnrnkanu-md/JNR-MD?style=for-the-badge&label=Stars" alt="Stars"/>
+  <img src="https://img.shields.io/github/forks/jnrnkanu-md/JNR-MD?style=for-the-badge&label=Forks" alt="Forks"/>
+  <img src="https://img.shields.io/github/watchers/jnrnkanu-md/JNR-MD?style=for-the-badge&label=Watchers" alt="Watchers"/>
 </div>
 
 ---
