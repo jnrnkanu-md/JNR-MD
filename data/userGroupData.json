@@ -1,0 +1,19 @@
+{
+  "users": [],
+  "groups": [],
+  "antilink": {
+    "120363428145191673@g.us": {
+      "enabled": true,
+      "action": "delete"
+    }
+  },
+  "antibadword": {},
+  "warnings": {},
+  "sudo": [],
+  "welcome": {},
+  "goodbye": {},
+  "chatbot": {
+    "120363428145191673@g.us": true
+  },
+  "autoReaction": false
+}
