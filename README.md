@@ -4,19 +4,19 @@ This is a WhatsApp bot built using the Baileys library for group management, inc
 
 <div align="center"> 
   <a href="https://git.io/typing-svg"> 
-    <img src="https://readme-typing-svg.demolab.com?font=Ribeye&size=50&pause=1000&color=33ff00&center=true&width=910&height=100&lines=JOKER-MD;Multi+Device+Whatsapp+Bot;Coded+By+bigbosssunzy" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Ribeye&size=50&pause=1000&color=33ff00&center=true&width=910&height=100&lines=JNR NKANU-MD;Multi+Device+Whatsapp+Bot;Coded+By+bigbosssunzy" alt="Typing SVG" />
   </a> 
 </div> 
 
 <div align="center"> 
-  <img src="assets/bot_image.jpg" alt="JOKER-MD" height="300" onerror="this.src='https://placehold.co/600x300?text=JOKER-MD+Bot'"> 
+  <img src="assets/bot_image.jpg" alt="JNR NKANU-MD" height="300" onerror="this.src='https://placehold.co/600x300?text=JOKER-MD+Bot'"> 
 </div>
 
 <div align="center">
   <img src="https://img.shields.io/github/followers/bigbosssunzy?style=for-the-badge&label=Followers" alt="Followers"/>
-  <img src="https://img.shields.io/github/stars/bigbosssunzy/JOKER-MD?style=for-the-badge&label=Stars" alt="Stars"/>
-  <img src="https://img.shields.io/github/forks/bigbosssunzy/JOKER-MD?style=for-the-badge&label=Forks" alt="Forks"/>
-  <img src="https://img.shields.io/github/watchers/bigbosssunzy/JOKER-MD?style=for-the-badge&label=Watchers" alt="Watchers"/>
+  <img src="https://img.shields.io/github/stars/bigbosssunzy/JNR NKANU-MD?style=for-the-badge&label=Stars" alt="Stars"/>
+  <img src="https://img.shields.io/github/forks/bigbosssunzy/JNR NKANU-MD?style=for-the-badge&label=Forks" alt="Forks"/>
+  <img src="https://img.shields.io/github/watchers/bigbosssunzy/JNR NKANU-MD?style=for-the-badge&label=Watchers" alt="Watchers"/>
 </div>
 
 ---
