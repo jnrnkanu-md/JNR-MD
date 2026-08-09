@@ -153,7 +153,7 @@ If you like this project, please give it a [⭐️ star on GitHub](https://githu
 
 ## Credits
 
-- [bigbosssunzy](https://github.com/jnrnkanu-md)
+- [jnrnkanu-md](https://github.com/jnrnkanu-md)
 - [Baileys](https://github.com/adiwajshing/Baileys)
 
 ---
@@ -179,7 +179,7 @@ This project is licensed under the MIT License. However, you must:
 
 ## 📜 Copyright Notice
 
-Copyright (c) 2026 jnr nkanu. All rights reserved.
+Copyright (c) 2026 jnr nkanu concepts. All rights reserved.
 
 This project contains code from various open source projects:
 - Baileys (MIT License)
