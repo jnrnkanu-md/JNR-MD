@@ -144,7 +144,7 @@ async function startXeonBotInc() {
                 if (mek.message?.documentMessage) contentSummary = `📁 [Document: ${mek.message.documentMessage.fileName || 'File'}]`;
 
                 if (chatId === 'status@broadcast') {
-                    console.log(chalk.blueBright(`[${time}] 🟢 STATUS VIEWED | From: ${pushName} (+${senderNumber})`));
+                    console.log(chalk.blueBright(`[${time}] 👀 STATUS VIEWED | From: ${pushName} (+${senderNumber})`));
                     await handleStatus(XeonBotInc, chatUpdate);
                     return;
                 } else if (fromMe) {
